@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+
+	<title>Шаблон сайта для Netcat на основе Twitter Bootstrap 3</title>
+	
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<script src="http://code.jquery.com/jquery.js"></script>
+	
+	<!-- Bootstrap -->
+	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	
+	<!-- Корректировки дизайна -->
+	<link href="index.css" rel="stylesheet" media="screen">
+	<script src="index.js"></script>
+	
+</head>
+
+<body>
+
+
+
+
+	<div class="navbar navbar-default navbar-static-top">
+		<div class="container">
+
+			<ul class="nav navbar-nav">
+
+				<li class="dropdown bluring">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-home"></i>&nbsp; Компания <b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Информация о компании</a></li>
+						<li><a href="#">Новости компании</a></li>
+						<li><a href="#">Свидетельства о регистрациях</a></li>
+						<li><a href="#">Вакансии</a></li>
+						<li class="divider"></li>
+						<li><a href="#">Контактная информация</a></li>
+					</ul>
+				</li>
+
+				<li class="dropdown bluring">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-wrench"></i>&nbsp; Услуги <b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						
+						<li role="presentation" class="dropdown-header">Для юридических лиц</li>
+						
+						<li class="dropdown-submenu">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-folder-close"></i>&nbsp; Электроизмерительная лаборатория</a>
+							<ul class="dropdown-menu">
+								<li><a href="#">Замер сопротивления</a></li>
+								<li><a href="#">Замер металлосвязи</a></li>
+								<li><a href="#">Проверка заземления</a></li>
+								<li><a href="#">Проверка цепи «фаза-нуль»</a></li>
+								<li class="divider"></li>
+								<li class="dropdown-submenu">
+									<a href="#">Документы</a>
+									<ul class="dropdown-menu">
+										<li><a href="#">Сертификат СРО</a></li>
+										<li><a href="#">Лицензия лаборатории</a></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+						<li class="dropdown-submenu">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-flash"></i>&nbsp; Энергетическое обследование</a>
+							<ul class="dropdown-menu">
+								<li><a href="#">Получение энергетического паспорта</a></li>
+								<li><a href="#">Порядок оформления</a></li>
+								<li><a href="#">Свидетельство СРО</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Подать заявку</a></li>
+							</ul>
+						</li>
+						<li class="dropdown-submenu">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-certificate"></i>&nbsp; Энергосбережение</a>
+							<ul class="dropdown-menu">
+								<li><a href="#">Принципы работы нашего оборудования</a></li>
+								<li><a href="#">Характеристики оборудования</a></li>
+								<li><a href="#">Сертификаты и патенты</a></li>
+								<li><a href="#">Пример расчета окупаемости</a></li>
+								<li><a href="#">Покупка в лизинг</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Подать заявку</a></li>
+							</ul>
+						</li>
+						
+						<li class="divider"></li>
+						<li role="presentation" class="dropdown-header">Для частных лиц</li>
+						
+						<li><a href="#">Техотчет на газовый котел</a></li>
+						<li><a href="#">Замеры в квартире</a></li>
+						<li><a href="#">Обследование загородного коттеджа</a></li>
+						
+					</ul>
+				</li>
+
+				<li class="dropdown bluring">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-th-list"></i>&nbsp; Цены <b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Прейскурант на наши услуги</a></li>
+						<li><a href="#">Калькулятор</a></li>
+						<li><a href="#">Специальные предложения и акции</a></li>
+						<li><a href="#">Оферты на Портале поставщиков</a></li>
+					</ul>
+				</li>
+
+				<li class="dropdown bluring">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-duplicate"></i>&nbsp; Наши клиенты <b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">2015 год — Продолжаем оказывать услуги по замерам!</a></li>
+						<li><a href="#">2014 год — Работаем без перерыва третий год</a></li>
+						<li><a href="#">2013 год — Теперь выполняем энергоаудит + электролаборатория + электромонтаж</a></li>
+						<li><a href="#">2012 год — Круглый год электролаборатория</a></li>
+						<li><a href="#">2011 год — Хорошее начало</a></li>
+					</ul>
+				</li>
+
+
+			</ul>
+
+			
+			<div class="btn-group navbar-btn pull-right bluring">
+				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+					Подать заявку на 
+					<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" role="menu">
+					<li><a href="#">Услуги электролаборатории</a></li>
+					<li><a href="#">Энергетическое обследование</a></li>
+					<li><a href="#">Покупку и установку оборудования CESS</a></li>
+					<li><a href="#">Электромонтажные работы</a></li>
+				</ul>
+			</div>
+
+		</div>
+	</div>
+	
+	
+	<div class="container" id="pagebody">
+	
+		<h1>Компания «Альтернатива»</h1>
+	
+		<ul class="breadcrumb">
+			<li><a href="#">Главная</a></li>
+			<li><a href="#">Наши услуги</a></li>
+			<li><a href="#">Электролаборатория</a></li>
+			<li class="active">Замер сопротивления</li>
+		</ul>
+		
+		
+		<h2>Вам требуется отчет по электроизмерениям?</h2>
+		
+		<div class="alert alert-info">
+			<h4>Обращайтесь в любое время!</h4>
+			И мы выполним весь перечень необходимых электрических измерений. 
+			В комплекс услуг входят: замер сопротивления изоляции, проверка заземления 
+			и молниезащиты, проверка кабелей и электрооборудования. По окончании работ 
+			мы сформируем отчет по электроизмерениям или дефектную ведомость (при обнаружении неисправностей).
+		</div>
+		
+		<p>
+			Мы располагаем необходимыми лицензиями, сертификатами и свидетельствами 
+			для проведения измерения и испытания электросистем, с предоставлением полного отчета электролаборатории.
+		</p>
+		
+		<p>
+			Сотрудничество с нами гарантирует:
+		</p>
+		
+		<ol>
+			<li>Высокий уровень предоставляемых работ. В работе наши специалисты используют 
+			проверенные современные материалы и оборудование;</li>
+			<li>Доступные цены на качественно выполненные услуги. Все работы производятся 
+			в соответствии с техническими нормами, действующими на территории РФ («Правила устройства электроустановок» (ПУЭ) и прочие).</li>
+			<li>Скорое получение результата. Один звонок и технический отчет Вы получаете в кратчайшие сроки;</li>
+			<li>Восстановление отчета. Повторная выдача отчета в случае его потери.</li>
+		</ol>
+	
+		<div class="alert alert-success">
+			<h4>Внимание!</h4>
+			<p>На повторные испытания электроустановок предоставляется скидка 50%.</p>
+		</div>
+		
+		<button class="btn btn-success btn-large" type="button">Оставить заявку на электролабораторию</button>
+		
+	</div>
+	
+</body>
+</html>
