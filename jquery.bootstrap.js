@@ -11,13 +11,26 @@ $(function() {
 	        position: "top",
 	        fluid: true,
 	        type: "static",
-	        inverse: false
+	        inverse: false,
+	        bluring: true
 	    }, options);
 	    
 	    if (options.position == "bottom") options.type = "fixed";
 		
 		var convert = function() {
-			convertToNav(this);
+			var nav = convertToNav(this);
+			
+			if (options.bluring) {
+				
+				nav.find(".bluring").on("show.bs.dropdown", function () {
+					$("#pagebody").addClass("blur");
+				});
+				
+				nav.find(".bluring").on("hide.bs.dropdown", function () {
+					$("#pagebody").removeClass("blur");
+				});
+			}
+			
 		};
 		
 		function convertToNav(ul) {
@@ -26,7 +39,7 @@ $(function() {
 			ul.addClass("navbar-nav");
 			convertToDropdown(ul.find(">li"));
 			
-			
+			// Основные настройки навигационной панели
 			var nav = $("<nav/>").addClass("navbar navbar-default");
 			nav.addClass("navbar-" + options.type + "-" + options.position);
 			if (options.inverse) nav.addClass("navbar-inverse");
@@ -34,7 +47,8 @@ $(function() {
 			nav.append(container);
 			ul.before(nav);
 			
-			if (options.brand) {
+			// Добавление заголовка навигационной панели
+			if (options.brand && $.trim(options.brand) != "") {
 			    if (typeof(options.brand) == "string") {
 			        options.brand = { title: options.brand };
 			    }
@@ -47,19 +61,21 @@ $(function() {
 			}
 			
 			container.append(ul);
+			
+			return nav; 
 		}
 		
 		function convertToDropdown(li) {
 			li.addClass("dropdown");
 			
-			var hasIcons = li.find("a[icon]").size();
+			var hasIcons = li.find("a[icon!='']").size();
 			
 			li.each(function(index, li) {
 				li = $(li);
 				
 				var level = li.parents("ul").size();
 				
-				if (level == 1) li.addClass("bluring");
+				if (options.bluring && level == 1) li.addClass("bluring");
 
 				var ul = li.find(">ul");
 				var a = li.find(">a");
