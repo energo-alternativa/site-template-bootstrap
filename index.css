@@ -184,6 +184,10 @@
 	margin-right: 20px;
 }
 
+.navbar .caret {
+	margin-left: 5px;
+}
+
 /* Эффект размытия */
 
 .blur {

@@ -5,7 +5,16 @@ $(function() {
 	 * Конвертация обычного ul-меню в меню для навигационного бара Twitter Bootstrap.
 	 */
 	 
-	jQuery.fn.bootstrapConvertToNavbar = function() {
+	jQuery.fn.bootstrapConvertToNavbar = function(options) {
+	    
+	    options = $.extend({
+	        position: "top",
+	        fluid: true,
+	        type: "static",
+	        inverse: false
+	    }, options);
+	    
+	    if (options.position == "bottom") options.type = "fixed";
 		
 		var convert = function() {
 			convertToNav(this);
@@ -16,10 +25,35 @@ $(function() {
 			ul.addClass("nav");
 			ul.addClass("navbar-nav");
 			convertToDropdown(ul.find(">li"));
+			
+			
+			var nav = $("<nav/>").addClass("navbar navbar-default");
+			nav.addClass("navbar-" + options.type + "-" + options.position);
+			if (options.inverse) nav.addClass("navbar-inverse");
+			var container = $("<div/>").addClass("container-" + (options.fluid ? "fluid" : ""));
+			nav.append(container);
+			ul.before(nav);
+			
+			if (options.brand) {
+			    if (typeof(options.brand) == "string") {
+			        options.brand = { title: options.brand };
+			    }
+			    options.brand = $.extend({
+			        fontFamily: "lobster",
+			        url: "/"
+			    }, options.brand);
+			    var brand = $("<a/>").addClass("navbar-brand").addClass(options.brand.fontFamily).attr("href", options.brand.url).text(options.brand.title);
+			    container.append(brand);
+			}
+			
+			container.append(ul);
 		}
 		
 		function convertToDropdown(li) {
 			li.addClass("dropdown");
+			
+			var hasIcons = li.find("a[icon]").size();
+			
 			li.each(function(index, li) {
 				li = $(li);
 				
@@ -28,24 +62,26 @@ $(function() {
 				if (level == 1) li.addClass("bluring");
 
 				var ul = li.find(">ul");
+				var a = li.find(">a");
 				
 				if (li.text() == "divider" && !ul.size()) {
 					li.addClass("divider");
 					li.empty();
-				} else {
-					var a = li.find(">a");
-					
+				} else if (!a.size()) {
+				    li.removeClass("dropdown");
+					li.addClass("dropdown-header");
+				} {
 					var title = a.html();
 					a.empty();
 					
-					var icon = li.attr("icon");
-					li.removeAttr("icon");
-					if (icon) {
-						icon = $("<i/>").addClass("icon-" + icon);
+					if (hasIcons) {
+    					var icon = a.attr("icon") || "space";
+    					a.removeAttr("icon");
+						icon = $("<i/>").addClass("glyphicon glyphicon-" + icon);
 						a.append(icon);
 						a.append("<span> </span>");
 					}
-
+					
 					title = $("<span/>").html(title);
 					a.append(title);
 					
