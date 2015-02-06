@@ -1,4 +1,10 @@
 
+/**
+ * Плагины для Twitter Bootstrap 3
+ * Автор: Хусамов С.А.
+ * Сайт автора: http://khusamov.ru/
+ */
+
 $(function() {
 	
 	/**
@@ -31,6 +37,20 @@ $(function() {
 				});
 			}
 			
+			if (options.type == "affixed") {
+				var prev = nav.prevAll();
+				nav.affix({
+					offset: {
+						top: function() {
+							var offsetTop = 0;
+							prev.each(function() {
+								offsetTop += $(this).outerHeight(true);
+							});
+							return offsetTop;
+						}
+					}
+				});
+			}
 		};
 		
 		function convertToNav(ul) {
@@ -40,14 +60,26 @@ $(function() {
 			convertToDropdown(ul.find(">li"));
 			
 			// Основные настройки навигационной панели
+			
+			var type = options.type;
+			if (options.type == "affixed") type = "static";
+			
 			var nav = $("<nav/>").addClass("navbar navbar-default");
-			nav.addClass("navbar-" + options.type + "-" + options.position);
+			nav.addClass("navbar-" + type + "-" + options.position);
 			if (options.inverse) nav.addClass("navbar-inverse");
 			var container = $("<div/>").addClass("container-" + (options.fluid ? "fluid" : ""));
 			nav.append(container);
 			ul.before(nav);
 			
+			if (options.type == "affixed") {
+				nav.attr("data-spy", "affix").css({
+					width: "100%",
+					top: "0px"
+				});
+			}
+			
 			// Добавление заголовка навигационной панели
+			
 			if (options.brand && $.trim(options.brand) != "") {
 			    if (typeof(options.brand) == "string") {
 			        options.brand = { title: options.brand };
@@ -56,7 +88,13 @@ $(function() {
 			        fontFamily: "lobster",
 			        url: "/"
 			    }, options.brand);
-			    var brand = $("<a/>").addClass("navbar-brand").addClass(options.brand.fontFamily).attr("href", options.brand.url).text(options.brand.title);
+			    
+			    var brand = $("<a/>")
+			    	.addClass("navbar-brand")
+			    	.addClass(options.brand.fontFamily)
+			    	.attr("href", options.brand.url)
+			    	.text(options.brand.title);
+			    	
 			    container.append(brand);
 			}
 			
@@ -68,7 +106,10 @@ $(function() {
 		function convertToDropdown(li) {
 			li.addClass("dropdown");
 			
-			var hasIcons = li.find("a[icon!='']").size();
+			// Проверяем наличие иконок выбранных разделов
+			// Также проверяем наличие иконок подразделов тех разделов, чей тип равен header
+			// Считаем что есть иконки, если будет найдена хотя бы одна
+			var hasIcons = li.add(li.filter("[type='header']").find(">ul>li")).find("a[icon!='']").size();
 			
 			li.each(function(index, li) {
 				li = $(li);
@@ -80,13 +121,16 @@ $(function() {
 				var ul = li.find(">ul");
 				var a = li.find(">a");
 				
-				if (li.text() == "divider" && !ul.size()) {
+				if (li.attr("type") == "divider") {
 					li.addClass("divider");
 					li.empty();
-				} else if (!a.size()) {
+				} else if (li.attr("type") == "header") {
 				    li.removeClass("dropdown");
 					li.addClass("dropdown-header");
-				} {
+					convertToDropdown(ul.find(">li").insertAfter(li));
+					li.html(a.html());
+					li.before($("<li/>").addClass("divider"));
+				} else {
 					var title = a.html();
 					a.empty();
 					
