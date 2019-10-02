@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+
+	<title>Reformator</title>
+	
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<!-- Bootstrap -->
+	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<script src="http://code.jquery.com/jquery.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	
+	<!-- Корректировки дизайна -->
+	<style type="text/css">
+
+		.dropdown-submenu > a:after {
+			margin-right: -20px;
+		}
+		
+		.dropdown-menu > li > a {
+			padding-right: 35px;
+		}
+		
+	</style>
+	
+	<!-- Reformator -->
+	<link rel="stylesheet" type="text/css" href="reformator/reformator.css" />
+	<link rel="stylesheet" type="text/css" href="reformator/toolbar.css" />
+	<style type="text/css">
+		
+	</style>
+	
+</head>
+
+<body>
+
+
+					<div id="reformator_toolbar">
+						<a href="reformatorhelp.html" target="help" id="reformator_help" title="Справка по Реформатору">?</a>
+						<ins class="toolbar">
+							<ins><a href="#clear" class="btn button with_icon"><ins class="clear_icon icon"><ins></ins></ins>Очистить HTML</a></ins>
+							<ins><a href="#typograph" class="button with_icon"><ins class="typograph_icon icon"><ins></ins></ins>Типографить</a></ins>
+						</ins>
+						<ins class="toolbar">
+							<ins><a class="btn" href="#format p">Обычный параграф</a></ins>
+							<ins><a class="button" href="#format div">Слой</a></ins>
+							<ins><a class="button" href="#format h1">Заголовок 1</a></ins>
+							<ins><a class="button" href="#format h2">Заголовок 2</a></ins>
+							<ins><a class="button" href="#format h3">Заголовок 3</a></ins>
+							<ins><a class="button" href="#format blockquote">Цитата</a></ins>
+							<ins><a class="button" href="#format address">Адрес</a></ins>
+						</ins>
+						<ins class="toolbar">
+							<ins><a class="button" href="#format p.before_list">Перед списком:</a></ins>
+							<ins><a class="button with_icon" href="#format ul"><ins class="unordered_list_icon icon"><ins></ins></ins>Ненум. список</a></ins>
+							<ins><a class="button with_icon" href="#format ol"><ins class="ordered_list_icon icon"><ins></ins></ins>Нум. список</a></ins>
+							<ins><a class="button with_icon" href="#format li li"><ins class="sublist_icon icon"><ins></ins></ins>Вложенный список</a></ins>
+						</ins>
+						<ins class="toolbar">
+							<ins><a class="button" href="#format span">Спан</a></ins>
+							<ins><a class="button" href="#format a[href]" class="hyperlink" title="Адрес">Ссылка</a></ins>
+							<ins><a class="button" href="#format a[name]" class="anchor" title="ID">Якорь</a></ins>
+							<ins><a class="button" href="#format strong"><strong>Полужирный</strong></a></ins>
+							<ins><a class="button" href="#format em"><em>Наклонный</em></a></ins>
+							<ins><a class="button" href="#format sup">X<sup>y</sup></a></ins>
+							<ins><a class="button" href="#format sub">X<sub>y</sub></a></ins>
+							<ins><a class="button" href="#format nobr">Неразрывный</a></ins>
+							<ins><a class="button" href="#format nobr.phone">Телефон</a></ins>
+						</ins>
+						<ins class="toolbar">
+							<ins><a class="button" href="#source" title="Ctrl + Alt + U">Исходный HTML</a></ins>
+							<ins><a class="button" href="#autoformat">Автоформатирование</a></ins>
+						</ins>
+					</div>
+
+		<textarea name="something" class="HTML" rows="15"></textarea>
+
+		
+		<script type="text/javascript" charset="utf-8" src="reformator/reformator.js"></script>
+		
+		<script type="text/javascript">
+			reformator.auto({css_path: 'bootstrap/css/bootstrap.min.css', focus: true});
+			reformator.control.auto({element: document.getElementById('reformator_toolbar')});
+		</script>
+
+	
+</body>
+</html>
